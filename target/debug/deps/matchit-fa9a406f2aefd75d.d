@@ -1,0 +1,11 @@
+C:\Users\Hadson\Documents\Api-Backlog-Rust\target\debug\deps\libmatchit-fa9a406f2aefd75d.rmeta: C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\lib.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\error.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\params.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\router.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\tree.rs
+
+C:\Users\Hadson\Documents\Api-Backlog-Rust\target\debug\deps\libmatchit-fa9a406f2aefd75d.rlib: C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\lib.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\error.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\params.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\router.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\tree.rs
+
+C:\Users\Hadson\Documents\Api-Backlog-Rust\target\debug\deps\matchit-fa9a406f2aefd75d.d: C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\lib.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\error.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\params.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\router.rs C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\tree.rs
+
+C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\lib.rs:
+C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\error.rs:
+C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\params.rs:
+C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\router.rs:
+C:\Users\Hadson\.cargo\registry\src\index.crates.io-6f17d22bba15001f\matchit-0.7.3\src\tree.rs:
