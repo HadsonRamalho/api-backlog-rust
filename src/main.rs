@@ -3,9 +3,13 @@ use axum::{
     http::StatusCode,
     Json, Router,
 };
+use models::Filmes;
 use serde::{Deserialize, Serialize};
 
+mod controllers;
 mod routes;
+mod models;
+mod schema;
 
 #[tokio::main]
 async fn main() {
@@ -32,11 +36,14 @@ async fn create_user(
         id: 1337,
         username: payload.username,
     };
+    println!("{:?}", user);
 
     // this will be converted into a JSON response
     // with a status code of `201 Created`
     (StatusCode::CREATED, Json(user))
 }
+
+
 
 // the input to our `create_user` handler
 #[derive(Deserialize)]
@@ -45,7 +52,7 @@ struct CreateUser {
 }
 
 // the output to our `create_user` handler
-#[derive(Serialize)]
+#[derive(Serialize, Debug)]
 struct User {
     id: u64,
     username: String,
