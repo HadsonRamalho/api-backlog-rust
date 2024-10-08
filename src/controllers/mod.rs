@@ -1,7 +1,7 @@
 use std::env;
 
-use axum::{http::StatusCode, Json};
-use diesel::{query_dsl::methods::LimitDsl, Connection, PgConnection, RunQueryDsl, SelectableHelper};
+use axum::{extract::Path, http::StatusCode, Json};
+use diesel::{query_dsl::methods::{FilterDsl, LimitDsl}, Connection, ExpressionMethods, PgConnection, RunQueryDsl, SelectableHelper};
 use dotenvy::dotenv;
 use diesel::query_dsl::methods::SelectDsl;
 
@@ -16,7 +16,7 @@ pub fn conectar() -> PgConnection{
 
 pub async fn buscar_todos_os_filmes() -> (StatusCode, axum::Json<Vec<Filmes>>) {
     use crate::schema::filmes::dsl::*;
-    let mut conexao = &mut conectar();
+    let conexao = &mut conectar();
     let filme = filmes
         .limit(5)
         .select(Filmes::as_select())
@@ -53,4 +53,17 @@ pub async fn cadastrar_filme(Json(payload): Json<models::Filmes>) -> (StatusCode
 
     (StatusCode::CREATED, Json(filme_cadastrado))
 
+}
+
+pub async fn buscar_filme(Path(idfilme): Path<i32>) -> (StatusCode, axum::Json<Vec<Filmes>>){
+    use crate::schema::filmes::dsl::*;
+    let conexao = &mut conectar();
+    let filme = filmes
+        .limit(1)
+        .select(Filmes::as_select())
+        .filter(id.eq(idfilme))
+        .load( conexao)
+        .expect("Erro carregando o filme");
+  
+    (StatusCode::FOUND, axum::Json(filme))
 }
