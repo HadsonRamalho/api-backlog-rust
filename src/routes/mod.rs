@@ -3,7 +3,7 @@ use axum::{
     Router,
 };
 
-use crate::{controllers::{buscar_filme, buscar_todos_os_filmes}, root};
+use crate::{controllers::{atualizar_filme, buscar_filme, buscar_todos_os_filmes}, root};
 use crate::controllers::cadastrar_filme;
 
 pub fn cria_rotas() -> Router<>{
@@ -13,6 +13,7 @@ pub fn cria_rotas() -> Router<>{
         // `POST /users` goes to `create_user`
         .route("/", post(cadastrar_filme))
         .route("/:id", get(buscar_filme))
+        .route("/atualizar/:id", get(atualizar_filme))
         ;
     app
 }

@@ -1,7 +1,7 @@
 use std::env;
 
 use axum::{extract::Path, http::StatusCode, Json};
-use diesel::{query_dsl::methods::{FilterDsl, LimitDsl}, Connection, ExpressionMethods, PgConnection, RunQueryDsl, SelectableHelper};
+use diesel::{query_dsl::methods::{FilterDsl, FindDsl, LimitDsl}, Connection, ExpressionMethods, PgConnection, RunQueryDsl, SelectableHelper};
 use dotenvy::dotenv;
 use diesel::query_dsl::methods::SelectDsl;
 
@@ -66,4 +66,16 @@ pub async fn buscar_filme(Path(idfilme): Path<i32>) -> (StatusCode, axum::Json<V
         .expect("Erro carregando o filme");
   
     (StatusCode::FOUND, axum::Json(filme))
+}
+
+pub async fn atualizar_filme(Path(idfilme): Path<i32>) -> (StatusCode, axum::Json<Filmes>){
+    use crate::schema::filmes::dsl::*;
+    let conexao = &mut conectar();
+    let filme = diesel::update(filmes.find(id))
+        .set(titulo.eq("O Senhor dos Aneis: A Sociedade do Anel"))
+        .returning(Filmes::as_returning())
+        .get_result(conexao)
+        .unwrap();
+    (StatusCode::OK, axum::Json(filme))
+
 }
