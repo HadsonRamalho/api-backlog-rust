@@ -68,11 +68,12 @@ pub async fn buscar_filme(Path(idfilme): Path<i32>) -> (StatusCode, axum::Json<V
     (StatusCode::FOUND, axum::Json(filme))
 }
 
-pub async fn atualizar_filme(Path(idfilme): Path<i32>) -> (StatusCode, axum::Json<Filmes>){
+pub async fn atualizar_filme(Path(idfilme): Path<i32>, Json(payload): Json<models::Filmes>) -> (StatusCode, axum::Json<Filmes>){
     use crate::schema::filmes::dsl::*;
     let conexao = &mut conectar();
+    let novotitulo = payload.titulo;
     let filme = diesel::update(filmes.find(id))
-        .set(titulo.eq("O Senhor dos Aneis: A Sociedade do Anel"))
+        .set(titulo.eq(novotitulo))
         .returning(Filmes::as_returning())
         .get_result(conexao)
         .unwrap();
