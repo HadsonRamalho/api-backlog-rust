@@ -28,8 +28,8 @@ pub async fn buscar_todos_os_filmes() -> (StatusCode, axum::Json<Vec<Filmes>>) {
 
 pub async fn cadastrar_filme(Json(payload): Json<models::Filmes>) -> (StatusCode, axum::Json<Filmes>){
     let id: u32 = rand::random();
-    let id:i32 =
-    match id.to_string().trim().split_at(6).0.parse(){
+    let id:i32 = match id.to_string().trim().split_at(6).0.parse()
+    {
         Ok(id) => id,
         Err(e) => {println!("{:?}", e);
             rand::random()

@@ -1,5 +1,5 @@
 use axum::{
-    routing::{get, post, put},
+    routing::{delete, get, post, put},
     Router,
 };
 
@@ -12,6 +12,6 @@ pub fn cria_rotas() -> Router<>{
         .route("/", post(cadastrar_filme))
         .route("/:id", get(buscar_filme))
         .route("/atualizar/:id", put(atualizar_filme))
-        .route("/deletar/:id", get(deletar_filme));
+        .route("/deletar/:id", delete(deletar_filme));
     app
 }
