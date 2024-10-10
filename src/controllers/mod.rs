@@ -5,7 +5,7 @@ use diesel::{query_dsl::methods::{FilterDsl, FindDsl, LimitDsl}, Connection, Exp
 use dotenvy::dotenv;
 use diesel::query_dsl::methods::SelectDsl;
 
-use crate::{models::{self, Filmes, NovoFilme}, schema::filmes};
+use crate::{models::{self, Filmes}, schema::filmes};
 
 pub fn conectar() -> PgConnection{
     dotenv().ok();
@@ -27,8 +27,17 @@ pub async fn buscar_todos_os_filmes() -> (StatusCode, axum::Json<Vec<Filmes>>) {
 }
 
 pub async fn cadastrar_filme(Json(payload): Json<models::Filmes>) -> (StatusCode, axum::Json<Filmes>){
+    let id: u32 = rand::random();
+    let id:i32 =
+    match id.to_string().trim().split_at(6).0.parse(){
+        Ok(id) => id,
+        Err(e) => {println!("{:?}", e);
+            rand::random()
+        }
+    };
+
     let filme = Filmes{
-        id: 1,
+        id,
         titulo: payload.titulo,
         diretor: payload.diretor,
         ano: payload.ano,
@@ -38,15 +47,8 @@ pub async fn cadastrar_filme(Json(payload): Json<models::Filmes>) -> (StatusCode
 
     let conexao = &mut conectar();
 
-    let novo_filme = NovoFilme{ id: filme.id,
-        titulo: filme.titulo,
-        diretor: filme.diretor,
-        ano: filme.ano,
-        genero: filme.genero
-     };
-
     let filme_cadastrado = diesel::insert_into(filmes::table)
-        .values(&novo_filme)
+        .values(&filme)
         .returning(Filmes::as_returning())
         .get_result(conexao)
         .expect("Erro ao cadastrar o filme");
