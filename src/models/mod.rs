@@ -1,8 +1,6 @@
 use diesel::{prelude::{Insertable, Queryable}, Selectable};
 use serde::{Deserialize, Serialize};
 
-use crate::schema::filmes;
-
 #[derive(Serialize, Deserialize, Debug, Queryable, Selectable)]
 #[diesel(table_name = crate::schema::filmes)]
 #[diesel(check_for_backend(diesel::pg::Pg))]

@@ -78,5 +78,15 @@ pub async fn atualizar_filme(Path(idfilme): Path<i32>, Json(payload): Json<Strin
         .get_result(conexao)
         .expect("Erro ao atualizar o filme");
     (StatusCode::OK, axum::Json(filme))
+}
 
+pub async fn deletar_filme(Path(idfilme): Path<i32>) -> (StatusCode, axum::Json<String>){
+    use crate::schema::filmes::dsl::*;
+    let conexao = &mut conectar();
+    let qtd_filme_deletado = diesel::delete(
+        filmes.filter(id.eq(idfilme)))
+        .execute(conexao)
+        .expect("Erro ao deletar o filme");
+    println!("Filmes deletados: {}", qtd_filme_deletado);
+    (StatusCode::OK, axum::Json(format!("Filmes deletados: {}", qtd_filme_deletado)))
 }
