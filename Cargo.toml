@@ -10,5 +10,6 @@ tokio = { version = "1.0", features = ["full"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 dotenvy = "0.15"
-diesel = { version = "2.2.0", features = ["postgres"] }
+diesel = { version = "2.2.0", features = ["mysql"] }
 rand = "0.9.0-alpha.2"
+tower-http = {version = "0.6.1", features = ["cors"]}

@@ -2,12 +2,12 @@
 
 diesel::table! {
     filmes (id) {
-        id -> Int4,
+        id -> Integer,
         #[max_length = 64]
         titulo -> Varchar,
         #[max_length = 64]
         diretor -> Varchar,
-        ano -> Int4,
+        ano -> Integer,
         #[max_length = 64]
         genero -> Varchar,
     }
